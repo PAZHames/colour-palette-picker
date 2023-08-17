@@ -1,7 +1,30 @@
+body {
+    font-family: 'Montserrat', sans-serif;;
+}
+
 /* classes */
 
 .main-heading {
     text-align: center;
     font-size: 56px;
     color: darkgray;
+}
+
+#palettes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+#colorOne, #colorTwo, #colorThree, #colorFour, #colorFive {
+    height: 600px;
+    width: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#colorOneHead, #colorTwoHead, #colorThreeHead, #colorFourHead, #colorFiveHead {
+    font-size: 10px;
+    margin-bottom: 40px;
 }
