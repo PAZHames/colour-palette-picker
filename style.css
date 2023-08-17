@@ -7,10 +7,20 @@ body {
 .main-heading {
     text-align: center;
     font-size: 56px;
-    color: darkgray;
+    color: darkslategrey;
 }
 
-#palettes {
+#buttonWrapper {
+    margin-bottom: 20px;
+}
+
+#randomiseButton {
+    padding: 10px 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+.palettes {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,6 +35,8 @@ body {
 }
 
 #colorOneHead, #colorTwoHead, #colorThreeHead, #colorFourHead, #colorFiveHead {
-    font-size: 10px;
+    font-size: 20px;
     margin-bottom: 40px;
+    color: white;
+    font-weight: bold;
 }
