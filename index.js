@@ -26,3 +26,12 @@ function randomiseColors() {
     }
     
 }
+
+function changeColor(colorId) {
+    let hexcode = createColor();
+    let colorDiv = document.getElementById(colorId);
+    let colorHead = document.getElementById(`${colorId}Head`);
+
+    colorDiv.style.backgroundColor = hexcode;
+    colorHead.textContent = hexcode;
+}
