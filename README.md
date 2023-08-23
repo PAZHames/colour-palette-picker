@@ -21,6 +21,7 @@ Change Colors: You can click on each individual color box to change its value. W
 
 # Challenges and Solutions 
 
+|--------------|---------------------------------------------------------------------------------------------------------------|
 | **Challenge**  | When I added the JavaScript code to make the colours complementary, it broke both the colour generation and the headers. It was initially only producing one colour at a time, then the user had to populate each div by either clicking them individually or clicking the randomise button a series of times, during which time colours were often repeated. Furthermore, the headings for each div were being populated with multiple hex values from across the other divs. |
 | **Solution** | After much testing using `console.log`, I found that my problem was in my shuffle function. The destructuring assignment was not working properly, so I replaced it with a temp variable. That solved the headings and meant all five divs were populated with the first click. But I still had the problem of the repeating colours. Not ideal for a colour palette where range is key! |
 
