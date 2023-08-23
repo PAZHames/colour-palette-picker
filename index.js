@@ -10,21 +10,65 @@ function createColor() {
 }
 
 function randomiseColors() {
-    let codes = [];
-    let firstColor = document.getElementById('colorOne');
-    let secondColor = document.getElementById('colorTwo');
-    let thirdColor = document.getElementById('colorThree');
-    let fourthColor = document.getElementById('colorFour');
-    let fifthColor = document.getElementById('colorFive');
-    let colors = [firstColor, secondColor, thirdColor, fourthColor, fifthColor];
+    // generate random base color
+    let baseHex = createColor();
+    // generate complementary color on other side of color wheel 
+    let complementaryHex = getComplementaryColor(baseHex);
+
+    // let codes = [baseHex, complementaryHex];
+
+    // generate variations of base and complementary colours
+    let baseVariations = [];
+    let complementaryVariations = [];
 
     for (let i=0; i<5; i++) {
-        let hexcode = createColor();
-        codes.push(hexcode);
-        document.getElementById(`${colors[i].id}`).style.backgroundColor = codes[i];
-        document.getElementById(`${colors[i].id}Head`).textContent = `${codes[i]}`;
+        baseVariations.push(getVariationColor(baseHex));
+        complementaryVariations.push(getVariationColor(complementaryHex));
+    }
+
+    // accessing ids directly below
+    let colorDivs = ['colorOne', 'colorTwo', 'colorThree', 'colorFour', 'colorFive'];
+    let colors = [baseHex, complementaryHex, ...baseVariations, ...complementaryVariations];
+
+    shuffleArray(colors);
+
+    // applying hex values (background and head) to divs
+    for (let i=0; i<colorDivs.length; i++) {
+        let colorDiv = document.getElementById(colorDivs[i]);
+        let colorHead = document.getElementById(`${colorDivs[i]}Head`);
+
+        colorDiv.style.backgroundColor = colors[i];
+        colorHead.textContent = colors[i];
     }
     
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+function getComplementaryColor(hex) {
+    let r = parseInt(hex.substring(1, 3), 16);
+    let g = parseInt(hex.substring(3, 5), 16);
+    let b = parseInt(hex.substring(5, 7), 16);
+    let complementaryR = 255 - r;
+    let complementaryG = 255 - g;
+    let complementaryB = 255 - b;
+    return `#${complementaryR.toString(16).padStart(2,'0')}${complementaryG.toString(16).padStart(2,'0')}${complementaryB.toString(16).padStart(2,'0')}`
+
+}
+
+function getVariationColor(hex) {
+    let r = parseInt(hex.substring(1, 3), 16);
+    let g = parseInt(hex.substring(3, 5), 16);
+    let b = parseInt(hex.substring(5, 7), 16);
+    return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`
+
 }
 
 function changeColor(colorId) {
