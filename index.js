@@ -10,47 +10,50 @@ function createColor() {
 }
 
 function randomiseColors() {
-    // generate random base color
+    // Generate a random base color
     let baseHex = createColor();
-    // generate complementary color on other side of color wheel 
+
+    // Generate the complementary color for the base color
     let complementaryHex = getComplementaryColor(baseHex);
 
-    // let codes = [baseHex, complementaryHex];
-
-    // generate variations of base and complementary colours
+    // Generate variations of the base and complementary colors
     let baseVariations = [];
     let complementaryVariations = [];
 
-    for (let i=0; i<5; i++) {
+    for (let i = 0; i < 2; i++) {
         baseVariations.push(getVariationColor(baseHex));
         complementaryVariations.push(getVariationColor(complementaryHex));
     }
 
-    // accessing ids directly below
-    let colorDivs = ['colorOne', 'colorTwo', 'colorThree', 'colorFour', 'colorFive'];
+    // Shuffle the base and complementary variations
+    shuffleArray(baseVariations);
+    shuffleArray(complementaryVariations);
+
+    // Accessing the colorDivs by class name
+    let colorDivs = document.querySelectorAll('.palette-color');
+
+    // Combine the base and complementary colors with their variations
     let colors = [baseHex, complementaryHex, ...baseVariations, ...complementaryVariations];
 
-    // shuffleArray(colors);
-
-    // applying hex values (background and head) to divs
-    for (let i=0; i<colorDivs.length; i++) {
-        let colorDiv = document.getElementById(colorDivs[i]);
-        let colorHead = document.getElementById(`${colorDivs[i]}Head`);
+    // Applying hex values (background and head) to divs
+    for (let i = 0; i < colorDivs.length; i++) {
+        let colorDiv = colorDivs[i];
+        let colorHead = colorDiv.querySelector('.palette-color-head');
 
         colorDiv.style.backgroundColor = colors[i];
         colorHead.textContent = colors[i];
     }
-    
 }
 
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         const temp = array[i];
-//         array[i] = array[j];
-//         array[j] = temp;
-//     }
-// }
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
 
 function getComplementaryColor(hex) {
     let r = parseInt(hex.substring(1, 3), 16);
