@@ -30,7 +30,7 @@ function randomiseColors() {
     let colorDivs = ['colorOne', 'colorTwo', 'colorThree', 'colorFour', 'colorFive'];
     let colors = [baseHex, complementaryHex, ...baseVariations, ...complementaryVariations];
 
-    shuffleArray(colors);
+    // shuffleArray(colors);
 
     // applying hex values (background and head) to divs
     for (let i=0; i<colorDivs.length; i++) {
@@ -43,14 +43,14 @@ function randomiseColors() {
     
 }
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-}
+// function shuffleArray(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         const temp = array[i];
+//         array[i] = array[j];
+//         array[j] = temp;
+//     }
+// }
 
 function getComplementaryColor(hex) {
     let r = parseInt(hex.substring(1, 3), 16);

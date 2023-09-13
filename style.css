@@ -15,9 +15,30 @@ body {
 }
 
 #randomiseButton {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: darkslategray;
+    background-color: white;
+    border: solid 2px darkslategray;
+    border-radius: 5px;
     padding: 10px 20px;
     display: block;
     margin: 0 auto;
+    margin-bottom: 40px;
+
+}
+
+#randomiseButton:hover {
+    color: white;
+    background-color: darkslategray;
+    transition: 250ms all ease-in-out;
+    cursor: pointer;
+
+}
+
+.instructions {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .palettes {
@@ -32,6 +53,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+
+#colorOne:hover, #colorTwo:hover, #colorThree:hover, #colorFour:hover, #colorFive:hover {
+    border: solid 5px darkslategray;
+    cursor: pointer;
 }
 
 #colorOneHead, #colorTwoHead, #colorThreeHead, #colorFourHead, #colorFiveHead {
